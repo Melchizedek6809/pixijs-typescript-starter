@@ -1,0 +1,26 @@
+{
+    "name": "pixijs-typescript-starter",
+    "version": "0.0.1",
+    "description": "Simple starter template for PixiJS + TypeScript based games / animations",
+    "scripts": {
+        "dev": "webpack-dev-server --mode=development",
+        "build": "webpack --mode=production",
+        "typecheck": "tsc -p ./tsconfig.json --noEmit"
+    },
+    "author": "Benjamin Vincent Schulenburg <ben@wolkenwelten.net>",
+    "license": "MIT",
+    "devDependencies": {
+        "typescript": "^4.9.4",
+        "@swc/core": "^1.3.24",
+        "swc-loader": "^0.2.3",
+
+        "webpack": "^5.75.0",
+        "webpack-cli": "~5.0.1",
+        "copy-webpack-plugin": "^11.0.0",
+        "html-webpack-plugin": "^5.5.0",
+        "webpack-dev-server": "^4.11.1"
+    },
+    "dependencies": {
+        "pixi.js": "^7.0.5"
+    }
+}
