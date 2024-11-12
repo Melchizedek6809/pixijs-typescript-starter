@@ -1,31 +1,28 @@
-import { Application } from 'pixi.js';
+import { Application, Assets } from 'pixi.js';
 import { Game } from './scenes/game';
 
-const initPixiApplication = () => {
+const initPixiApplication = async () => {
     const app = new Application();
-    document.body.appendChild(app.view as HTMLCanvasElement);
 
-    // Ensure that the canvas will fill the entire area
+    // Intialize the application.
+    await app.init({ background: '#000000', resizeTo: window });
+
+    // Then adding the application's canvas to the DOM body.
+    document.body.appendChild(app.canvas);
     document.body.style.margin = '0';
-    if(app.renderer?.view?.style) {
-        app.renderer.view.style.width = `100%`;
-        app.renderer.view.style.height = `100%`;
-
-        // Workaround for the minimal ICanvasType type
-        (app.renderer?.view?.style as any).display = 'block';
-    }
-
-    // Change the canvas size on every resize so that things won't be stretched
-    app.renderer.resize(window.innerWidth, window.innerHeight);
-    window.addEventListener('resize', e => {
-        app.renderer.resize(window.innerWidth, window.innerHeight);
-    });
 
     return app;
 };
 
-const main = () => {
-    const app = initPixiApplication();
+const loadAssets = async () => {
+    await Assets.load('assets/sicp.png');
+    await Assets.load('assets/background.png');
+};
+
+const main = async () => {
+    const app = await initPixiApplication();
+
+    await loadAssets();
 
     // Switch to the Game scene
     const scene = new Game(app);

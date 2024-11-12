@@ -51,8 +51,8 @@ export class Game extends Container {
         }
 
         // Scale the sprite depending on it's velocity
-        this.sprite.transform.scale.x = this.state.velocity.x >= 0 ? 1 : -1;
-        this.sprite.transform.scale.y = this.state.velocity.y >= 0 ? 1 : -1;
+        this.sprite.scale.x = this.state.velocity.x >= 0 ? 1 : -1;
+        this.sprite.scale.y = this.state.velocity.y >= 0 ? 1 : -1;
 
         // Clamp the sprite position since otherwise it could get stuck outside the viewable area due to resizes
         this.sprite.x = clamp(this.sprite.x + this.state.velocity.x, min_x, max_x);
